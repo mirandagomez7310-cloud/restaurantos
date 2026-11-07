@@ -1,10 +1,21 @@
 import { render, screen } from '@testing-library/react'
-import { expect, it } from 'vitest'
+import { expect, it, vi } from 'vitest'
 import { App } from './App'
 
-it('muestra el nombre del negocio', () => {
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: {
+      getSession: () => Promise.resolve({ data: { session: null } }),
+      onAuthStateChange: () => ({
+        data: { subscription: { unsubscribe: () => undefined } },
+      }),
+    },
+  },
+}))
+
+it('pide entrar cuando no hay sesión', async () => {
   render(<App />)
   expect(
-    screen.getByRole('heading', { level: 1, name: 'La Isla' }),
+    await screen.findByRole('button', { name: 'Entrar' }),
   ).toBeInTheDocument()
 })

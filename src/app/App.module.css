@@ -1,0 +1,28 @@
+.pagina {
+  box-sizing: border-box;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: var(--espacio-2);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+.salir {
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-2);
+  border: 2px solid var(--color-carbon);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  font: inherit;
+  font-weight: 700;
+}

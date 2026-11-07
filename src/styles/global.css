@@ -1,8 +1,15 @@
-:root {
-  color-scheme: light dark;
-  font-family: system-ui, sans-serif;
-}
+@import './tokens.css';
 
 body {
   margin: 0;
+  background: var(--color-crema);
+  color: var(--color-carbon);
+  font-family: var(--fuente);
+  font-size: var(--texto-m);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-tomate);
+  outline-offset: 2px;
 }

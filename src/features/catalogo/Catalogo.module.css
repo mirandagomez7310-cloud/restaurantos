@@ -1,0 +1,27 @@
+.grupo h2 {
+  margin: var(--espacio-3) 0 var(--espacio-1);
+  font-size: var(--texto-l);
+}
+
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-2);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+
+.etiqueta {
+  margin-left: var(--espacio-1);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radio);
+  background: var(--color-mostaza);
+  font-size: var(--texto-s);
+  font-weight: 600;
+}

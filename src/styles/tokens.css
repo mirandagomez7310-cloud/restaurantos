@@ -1,0 +1,23 @@
+:root {
+  --color-carbon: #17130f;
+  --color-mostaza: #f6b800;
+  --color-tomate: #d62f1f;
+  --color-crema: #fff8e8;
+  --color-blanco: #fff;
+  --color-borde: #c9b98f;
+  --color-linea: #eadfc4;
+
+  --fuente: 'Work Sans Variable', system-ui, sans-serif;
+  --texto-s: 1rem;
+  --texto-m: 1.125rem;
+  --texto-l: 1.5rem;
+  --texto-xl: 2rem;
+
+  --espacio-1: 0.5rem;
+  --espacio-2: 1rem;
+  --espacio-3: 1.5rem;
+  --espacio-4: 2rem;
+
+  --radio: 0.5rem;
+  --tactil: 3.5rem;
+}

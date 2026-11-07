@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { ErrorBoundary } from 'react-error-boundary'
 import { App } from '@/app/App'
 import { Providers } from '@/app/providers'
+import '@fontsource-variable/work-sans'
 import '@/styles/global.css'
 
 function ErrorGeneral() {

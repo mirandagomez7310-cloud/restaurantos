@@ -1,0 +1,54 @@
+.pagina {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  padding: var(--espacio-3) var(--espacio-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--espacio-3);
+  max-width: 26rem;
+  margin: 0 auto;
+}
+
+.titulo {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  font-weight: 600;
+}
+
+.campo input {
+  box-sizing: border-box;
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-2);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  font: inherit;
+  font-weight: 500;
+}
+
+.boton {
+  min-height: var(--tactil);
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+  font: inherit;
+  font-weight: 700;
+}
+
+.boton:disabled {
+  opacity: 0.7;
+}
