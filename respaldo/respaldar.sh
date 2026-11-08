@@ -7,6 +7,15 @@ set -euo pipefail
 : "${RCLONE_CONFIG_CONTENIDO:?Falta el secreto RCLONE_CONFIG}"
 : "${PRUEBA_URL:?Falta PRUEBA_URL}"
 
+# Un secreto guardado desde PowerShell llega con BOM y CRLF: se limpian.
+limpiar() {
+  local valor="${1#$'\xEF\xBB\xBF'}"
+  printf '%s' "${valor//$'\r'/}"
+}
+DB_URL=$(limpiar "$DB_URL")
+RCLONE_CONFIG_CONTENIDO=$(limpiar "$RCLONE_CONFIG_CONTENIDO")
+echo "::add-mask::$DB_URL"
+
 PG=/usr/lib/postgresql/17/bin
 DESTINO='drive:Respaldos La Isla'
 fecha=$(TZ=America/Mexico_City date +%F)
