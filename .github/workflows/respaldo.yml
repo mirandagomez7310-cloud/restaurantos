@@ -1,0 +1,49 @@
+name: Respaldo
+
+on:
+  schedule:
+    - cron: '0 10 * * *' # 04:00 en Ciudad de México (UTC-6 todo el año)
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/respaldo.yml
+      - respaldo/**
+
+concurrency:
+  group: respaldo
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  respaldo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      # Postgres temporal donde se prueba que el respaldo se restaura.
+      prueba:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: prueba
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready --health-interval 5s
+          --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar pg_dump 17, age y rclone
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common age rclone
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+
+      - name: Respaldar, probar, cifrar y subir
+        run: bash respaldo/respaldar.sh
+        env:
+          DB_URL: ${{ secrets.RESPALDO_DB_URL }}
+          RCLONE_CONFIG_CONTENIDO: ${{ secrets.RCLONE_CONFIG }}
+          PRUEBA_URL: postgresql://postgres:prueba@localhost:5432/postgres
