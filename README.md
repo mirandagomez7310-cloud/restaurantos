@@ -1,6 +1,6 @@
-# App La Isla
+# restaurantOS
 
-Sistema privado de operación y gestión del restaurante La Isla.
+ERP multi-negocio para restaurantes. Primer cliente: La Isla.
 
 ## Requisitos
 

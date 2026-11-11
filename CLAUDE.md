@@ -1,6 +1,6 @@
-# App La Isla
+# restaurantOS
 
-Sistema privado de operación y gestión del restaurante La Isla.
+ERP multi-negocio para restaurantes. La Isla es el primer cliente: sus datos son configuración, nunca valores fijos en el código.
 
 ## Stack
 
@@ -30,4 +30,4 @@ React 19 + Vite 8 + TS strict · Supabase · TanStack Query · React Router · Z
 
 ## Nota Obsidian
 
-`01 Proyectos/App La Isla/App La Isla.md`. Arquitectura y plan: `App La Isla - 07 Visión ERP-POS y arquitectura.md`.
+`01 Proyectos/restaurantOS/App La Isla.md`. Visión multi-negocio: `App La Isla - 10 Reevaluación ERP multi-negocio.md`. Plan técnico: `App La Isla - 09 Plan técnico definitivo.md`.
