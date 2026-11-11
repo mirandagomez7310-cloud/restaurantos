@@ -1,0 +1,72 @@
+.dialogo {
+  box-sizing: border-box;
+  width: min(100%, 34rem);
+  max-height: 92dvh;
+  margin: auto auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: var(--color-blanco);
+  color: var(--color-carbon);
+  overscroll-behavior: contain;
+}
+
+.dialogo::backdrop {
+  background: rgb(23 19 15 / 0.55);
+}
+
+.dialogo[open] {
+  animation: subir 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-2) calc(var(--espacio-3) + env(safe-area-inset-bottom));
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.cabecera h2 {
+  margin: 0;
+  font-size: var(--texto-l);
+  text-wrap: balance;
+}
+
+.cerrar {
+  min-height: 3rem;
+  padding: 0 var(--espacio-1);
+  border: 0;
+  background: transparent;
+  color: var(--color-carbon);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 48rem) {
+  .dialogo {
+    margin: auto;
+    border-radius: 0.75rem;
+  }
+}
+
+@keyframes subir {
+  from {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialogo[open] {
+    animation: none;
+  }
+}

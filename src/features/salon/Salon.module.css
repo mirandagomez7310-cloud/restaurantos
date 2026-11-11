@@ -1,0 +1,251 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0 var(--espacio-2);
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+.cabecera p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.estado {
+  padding: var(--espacio-2) 0;
+}
+
+.alerta {
+  margin: 0;
+  padding: 0.75rem var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-tomate);
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.sinDia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-1);
+  padding: var(--espacio-3) var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+}
+
+.sinDia p {
+  margin: 0;
+}
+
+.sinDia p:first-child {
+  font-size: var(--texto-l);
+  font-weight: 700;
+}
+
+.enlaceFuerte {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-3);
+  border-radius: var(--radio);
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* En el celular, las mesas en dos columnas; desde tablet, el plano real. */
+.plano {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.mesa {
+  box-sizing: border-box;
+  min-height: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  color: var(--color-carbon);
+  font: inherit;
+  font-size: var(--texto-s);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 120ms ease-out;
+}
+
+.mesa b {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.mesa:active {
+  transform: scale(0.98);
+}
+
+.mesa:disabled {
+  cursor: progress;
+}
+
+.mesa[data-estado='ocupada'] {
+  border-color: var(--color-carbon);
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+}
+
+.mesa[data-estado='alerta'] {
+  border-color: var(--color-tomate);
+  background: var(--color-tomate);
+  color: var(--color-blanco);
+}
+
+.nombreMesa {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 48rem) {
+  .plano {
+    grid-template-columns: repeat(var(--columnas), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--filas), minmax(3.25rem, auto));
+    gap: 0.5rem;
+    padding: var(--espacio-2);
+    border-radius: var(--radio);
+    background: var(--color-blanco);
+  }
+
+  .mesa {
+    grid-column: var(--columna);
+    grid-row: var(--fila);
+    min-height: 0;
+    background: var(--color-crema);
+  }
+
+  .mesa[data-forma='redonda'] {
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.sueltas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  margin-top: var(--espacio-2);
+}
+
+.sueltasCabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-1);
+}
+
+.sueltasCabecera h2 {
+  margin: 0;
+  font-size: var(--texto-l);
+}
+
+.acciones {
+  display: flex;
+  gap: var(--espacio-1);
+}
+
+.vacio {
+  margin: 0;
+  color: var(--color-apagado);
+}
+
+.listaSueltas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suelta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: var(--tactil);
+  padding: 0.75rem;
+  border-radius: var(--radio);
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+.suelta[data-estado='alerta'] {
+  background: var(--color-tomate);
+}
+
+.suelta b {
+  font-size: var(--texto-m);
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+  box-sizing: border-box;
+  min-height: var(--tactil);
+  padding: 0.75rem var(--espacio-2);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  font: inherit;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesa {
+    transition: none;
+  }
+  .mesa:active {
+    transform: none;
+  }
+}

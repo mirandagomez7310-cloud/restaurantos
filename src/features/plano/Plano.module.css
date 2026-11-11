@@ -1,0 +1,83 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--espacio-2);
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+.cabecera a {
+  color: var(--color-carbon);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.ayuda {
+  margin: 0;
+  max-width: 60ch;
+  line-height: 1.4;
+}
+
+.aviso {
+  margin: 0;
+  padding: 0.75rem var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-mostaza);
+  font-weight: 700;
+}
+
+.oculto {
+  margin: 0;
+  min-height: 0;
+}
+
+/* Cuadrícula visible: cada celda es un lugar posible para una mesa. */
+.lienzo {
+  display: grid;
+  grid-template-columns: repeat(var(--columnas), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--filas), minmax(0, 1fr));
+  aspect-ratio: var(--columnas) / var(--filas);
+  padding: 0;
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-blanco);
+  background-image:
+    linear-gradient(to right, var(--color-linea) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-linea) 1px, transparent 1px);
+  background-size: calc(100% / var(--columnas)) calc(100% / var(--filas));
+  touch-action: none;
+  user-select: none;
+}
+
+.mesa {
+  margin: 3px;
+  border: 2px solid var(--color-carbon);
+  border-radius: var(--radio);
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+  font: inherit;
+  font-weight: 700;
+  font-size: var(--texto-s);
+  cursor: grab;
+  touch-action: none;
+}
+
+.mesa[data-arrastrando='true'] {
+  cursor: grabbing;
+  box-shadow: 0 6px 16px rgb(23 19 15 / 0.25);
+}
+
+.mesa[data-invalida='true'] {
+  border-color: var(--color-tomate);
+  background: var(--color-tomate);
+}

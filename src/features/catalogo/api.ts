@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
-import { productoEsquema, type Producto } from './schemas'
+import { modificadorEsquema, productoEsquema, type Modificador, type Producto } from './schemas'
 
 export async function leerProductos(): Promise<Producto[]> {
   const { data, error } = await supabase
@@ -12,6 +12,17 @@ export async function leerProductos(): Promise<Producto[]> {
     .order('nombre')
   if (error) throw new Error(error.message)
   return z.array(productoEsquema).parse(data)
+}
+
+export async function leerModificadores(): Promise<Modificador[]> {
+  const { data, error } = await supabase
+    .from('modificadores')
+    .select('id, producto_id, grupo, nombre, precio_centavos, seleccion')
+    .eq('activo', true)
+    .order('grupo')
+    .order('nombre')
+  if (error) throw new Error(error.message)
+  return z.array(modificadorEsquema).parse(data)
 }
 
 export function agruparPorCategoria(productos: Producto[]) {

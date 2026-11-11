@@ -1,0 +1,62 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  max-width: 40rem;
+}
+
+.pagina h1 {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+.bloque {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  padding: var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+}
+
+.bloque p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.bloque h2 {
+  margin: 0;
+  font-size: var(--texto-l);
+}
+
+.grande {
+  font-size: var(--texto-l);
+  font-weight: 700;
+}
+
+.error {
+  margin: 0;
+  padding: 0.75rem var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-tomate);
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.cuentas,
+.enlaces {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cuentas a,
+.enlaces a {
+  display: flex;
+  align-items: center;
+  min-height: var(--tactil);
+  color: var(--color-carbon);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+  border-bottom: 1px solid var(--color-linea);
+}

@@ -1,0 +1,104 @@
+/* Celular: barra inferior. Desde tablet: barra lateral, como en el boceto aprobado. */
+.marco {
+  --alto-nav: 4.5rem;
+  min-height: 100dvh;
+}
+
+.nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 3;
+  display: flex;
+  min-height: var(--alto-nav);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--color-carbon);
+}
+
+.marca {
+  display: none;
+}
+
+.destino {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--alto-nav);
+  color: var(--color-blanco);
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.activo {
+  background: var(--color-mostaza);
+  color: var(--color-carbon);
+}
+
+.contenido {
+  box-sizing: border-box;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--espacio-2) var(--espacio-2) calc(var(--alto-nav) + var(--espacio-3));
+}
+
+.errorPantalla {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-1);
+  padding: var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+}
+
+.errorPantalla p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.errorPantalla button {
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-2);
+  border: 2px solid var(--color-carbon);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  font: inherit;
+  font-weight: 700;
+}
+
+@media (min-width: 60rem) {
+  .marco {
+    --alto-nav: 0px;
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+
+  .nav {
+    position: sticky;
+    inset: 0 auto auto 0;
+    flex-direction: column;
+    gap: 0.375rem;
+    height: 100dvh;
+    padding: var(--espacio-2) 0.5rem;
+  }
+
+  .marca {
+    display: block;
+    padding: 0 0 var(--espacio-2);
+    color: var(--color-mostaza);
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .destino {
+    flex: none;
+    min-height: 4.5rem;
+    border-radius: 0.375rem;
+  }
+
+  .contenido {
+    width: 100%;
+    padding: var(--espacio-3);
+  }
+}

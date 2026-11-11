@@ -1,0 +1,147 @@
+.pagina {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: var(--texto-xl);
+}
+
+section h2 {
+  margin: 0 0 var(--espacio-1);
+  font-size: var(--texto-l);
+}
+
+.alerta {
+  margin: 0;
+  padding: 0.75rem var(--espacio-2);
+  border-radius: var(--radio);
+  background: var(--color-tomate);
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.nota,
+.vacio {
+  margin: 0;
+  color: var(--color-apagado);
+}
+
+.tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+  gap: var(--espacio-2);
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  padding: var(--espacio-2);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+}
+
+.tarjeta[data-estado='fallido'] {
+  border-color: var(--color-tomate);
+}
+
+.estado {
+  margin: 0;
+  font-weight: 700;
+}
+
+.tarjeta[data-estado='fallido'] .estado {
+  color: var(--color-tomate);
+}
+
+/* El ticket se ve tal como sale en papel de 80 mm: 48 columnas monoespaciadas. */
+.ticket {
+  margin: 0;
+  padding: var(--espacio-1);
+  overflow-x: auto;
+  border-radius: 0.25rem;
+  background: var(--color-crema);
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.ticket[data-compacto='true'] {
+  max-height: 9rem;
+  overflow: auto;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1);
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.forma p {
+  margin: 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  font-weight: 600;
+}
+
+.campo input {
+  box-sizing: border-box;
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-2);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  font: inherit;
+}
+
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 3mm;
+  }
+
+  :global(body *) {
+    visibility: hidden;
+  }
+
+  .tarjeta[data-imprimiendo='true'] .ticket,
+  .tarjeta[data-imprimiendo='true'] .ticket * {
+    visibility: visible;
+  }
+
+  .tarjeta[data-imprimiendo='true'] .ticket {
+    position: fixed;
+    inset: 0 auto auto 0;
+    width: 74mm;
+    max-height: none;
+    padding: 0;
+    overflow: visible;
+    background: #fff;
+    color: #000;
+    font-size: 8.4pt;
+  }
+}

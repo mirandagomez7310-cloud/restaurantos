@@ -1,0 +1,75 @@
+.boton {
+  box-sizing: border-box;
+  min-height: var(--tactil);
+  padding: 0 var(--espacio-2);
+  border: 2px solid var(--color-carbon);
+  border-radius: var(--radio);
+  background: var(--color-blanco);
+  color: var(--color-carbon);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 150ms ease-out,
+    transform 120ms ease-out;
+}
+
+.boton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.boton:disabled {
+  cursor: not-allowed;
+  border-color: var(--color-borde);
+  background: var(--color-linea);
+  color: var(--color-apagado);
+}
+
+.grande {
+  min-height: 4.25rem;
+  font-size: var(--texto-l);
+}
+
+.primario {
+  background: var(--color-carbon);
+  color: var(--color-blanco);
+}
+
+.acento {
+  border-color: var(--color-mostaza);
+  background: var(--color-mostaza);
+}
+
+.peligro {
+  border-color: var(--color-tomate);
+  background: var(--color-tomate);
+  color: var(--color-blanco);
+}
+
+.discreto {
+  border-color: transparent;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (hover: hover) {
+  .normal:hover:not(:disabled) {
+    background: var(--color-crema);
+  }
+  .primario:hover:not(:disabled) {
+    background: #2e2720;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boton {
+    transition: none;
+  }
+  .boton:active:not(:disabled) {
+    transform: none;
+  }
+}

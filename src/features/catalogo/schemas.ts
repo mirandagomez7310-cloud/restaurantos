@@ -12,3 +12,14 @@ export const productoEsquema = z.object({
 })
 
 export type Producto = z.infer<typeof productoEsquema>
+
+export const modificadorEsquema = z.object({
+  id: z.uuid(),
+  producto_id: z.uuid(),
+  grupo: z.string(),
+  nombre: z.string(),
+  precio_centavos: z.number().int(),
+  seleccion: z.enum(['una', 'varias']),
+})
+
+export type Modificador = z.infer<typeof modificadorEsquema>
